@@ -16,23 +16,23 @@ async def on_message(ctx):
     if ctx.channel.id == 982394595478478906:
         pass
     else:
-        pass
+        return
     if ctx.author.id != bot.user.id:
         pass
     if not ctx.author.bot:
         pass
     else:
         return
-
+    chn = bot.get_channel(982394595478478906)
     times = [10, 5, 15]
     try:
         ll = await bot.wait_for("message", timeout=3600)
     except:
-        async with ctx.channel.typing():
+        async with chn.typing():
             await asyncio.sleep(random.choice(times))
         embed = discord.Embed(title="Come Chat!",
                               description="Aether is quiet,, it must be asleep :o Let's wake it up! Come talk to us!",
                               color=0xBEE0FA)
-        await ctx.channel.send("<@&982394594727718938>", embed=embed)
+        await chn.send("<@&982394594727718938>", embed=embed)
 
 bot.run(token)
